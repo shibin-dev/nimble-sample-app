@@ -4,7 +4,9 @@ import 'package:nimble_app/pages/authpage.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final String name;
+  final String password;
+  const HomePage(this.name,this.password,{Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +17,17 @@ class HomePage extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            // Text(userDetail.username!),
-            // Text(userDetail.password!),
-            SizedBox(height: 30,),
-               ElevatedButton(
-                onPressed: () =>
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => AuthPage(),)),
+            Text(name),
+            Text(password),
+            SizedBox(
+              height: 30,
+            ),
+            ElevatedButton(
+                onPressed: () => Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AuthPage(),
+                    )),
                 child: const Text("LogOut"))
           ],
         ),

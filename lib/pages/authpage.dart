@@ -30,11 +30,18 @@ class _AuthPageState extends State<AuthPage> {
     String name = namectrl.text.trim();
     String password = pasCtrl.text.trim();
     List<UserModel> users = Provider.of<AuthApi>(context, listen: false).users;
-    print(name);
-    print(password);
     users.forEach((element) {
       if (element.username == name && element.password == password) {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(),));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => HomePage(
+                name,
+                password,
+              ),
+            ));
+      } else {
+        print("popup area");
       }
     });
   }
